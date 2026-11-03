@@ -4,6 +4,30 @@ governance for the motifs axis: controlled free-ish tags, wrangled
 like archive of our own canonical tags, but deterministic. concepts
 adapted from the owner's memorium/substrate tag-wrangling research.
 
+## where proposals come from
+
+the queue lives at `data/motifs/queue.yaml`. proposals arrive from:
+
+- **tmdb keywords** via `src/ingest/tmdb_keywords.py` (needs
+  TMDB_API_KEY). verified seeds so far: whodunit (tmdb:12570),
+  buddy cop (tmdb:167316), small town (tmdb:1415).
+- **open library subjects** (book side, same pipeline later).
+- **owner and tagger notes**: anything a reviewer wants to propose.
+
+first live harvest (2026-11-03): 13 works resolved to tmdb ids (13/13,
+exact title plus year), 141 proposals in the queue. repeated runs are
+byte-identical. what the harvest shows: tmdb already carries lens-like
+keywords ("criminal consultant" on three works) but the long tail is
+noise ("adoring", "amused" from one work each). that settles the shape
+of open question 28: a keyword enters the queue as a candidate only
+when it recurs; uses counts are the filter.
+
+rules: nothing auto-adopts. a proposal is a normalized lowercase
+string with sources and a uses count. merging is deterministic: dedupe
+by name, sources by ref, uses summed, output sorted. a proposal
+crosses into canonical only by reviewed edit of
+`data/vocab/motifs.yaml` with an alias table (see the model below).
+
 ## the model
 
 ao3 wrangles by hand: volunteers map messy human tags onto canonical
