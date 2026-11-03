@@ -79,10 +79,14 @@ def merge_proposals(existing, incoming):
 def dump_queue(doc):
     """canonical queue yaml. stable across identical inputs."""
     out = {"version": doc.get("version", 1)}
-    out["proposals"] = [
-        {"proposal": p["proposal"], "sources": p["sources"]}
-        for p in sorted(doc["proposals"], key=lambda p: p["proposal"])
-    ]
+    proposals = []
+    for proposal in sorted(doc["proposals"], key=lambda p: p["proposal"]):
+        entry = {"proposal": proposal["proposal"]}
+        if "route" in proposal:
+            entry["route"] = proposal["route"]
+        entry["sources"] = proposal["sources"]
+        proposals.append(entry)
+    out["proposals"] = proposals
     head = (
         "# motif proposals from external sources. nothing here is canonical.\n"
         "# a reviewed proposal moves into data/vocab/motifs.yaml with an\n"

@@ -5,81 +5,123 @@
 version: 1
 proposals:
 - proposal: absurd
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:psych-2006
     uses: 1
 - proposal: adoring
+  route:
+    kind: discard
+    reason: listed as non-taste in routing
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:slow-horses-2022
     uses: 1
 - proposal: alcoholism
+  route:
+    kind: discard
+    reason: listed as non-taste in routing
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:mare-of-easttown-2021
     uses: 1
 - proposal: ambition
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:gilmore-girls-2000
     uses: 1
 - proposal: amused
+  route:
+    kind: discard
+    reason: listed as non-taste in routing
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:elsbeth-2024
     uses: 1
 - proposal: art thief
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:white-collar-2009
     uses: 1
 - proposal: based on comic
+  route:
+    kind: discard
+    reason: listed as non-taste in routing
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:izombie-2015
     uses: 1
 - proposal: based on graphic novel
+  route:
+    kind: discard
+    reason: listed as non-taste in routing
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:izombie-2015
     uses: 1
 - proposal: based on novel or book
+  route:
+    kind: discard
+    reason: listed as non-taste in routing
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:slow-horses-2022
     uses: 1
 - proposal: based on play or musical
+  route:
+    kind: discard
+    reason: listed as non-taste in routing
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: bisexual woman
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: breaking the fourth wall
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: british intelligence
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:slow-horses-2022
     uses: 1
 - proposal: british spy
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:slow-horses-2022
     uses: 1
 - proposal: buddy cop
+  route:
+    kind: alias
+    axis: ensemble_shape
+    value: odd-couple
   sources:
   - kind: tmdb-keyword
     ref: tmdb:167316
     uses: 0
 - proposal: california
+  route:
+    kind: metadata
+    field: setting_geo
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:monk-2002
@@ -88,21 +130,30 @@ proposals:
     ref: tmdb-work:psych-2006
     uses: 1
 - proposal: casual sex
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: cautionary
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:the-rookie-2018
     uses: 1
 - proposal: coffee
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:gilmore-girls-2000
     uses: 1
 - proposal: colleague
+  route:
+    kind: discard
+    reason: listed as non-taste in routing
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
@@ -111,11 +162,17 @@ proposals:
     ref: tmdb-work:white-collar-2009
     uses: 1
 - proposal: comforting
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:elsbeth-2024
     uses: 1
 - proposal: con man
+  route:
+    kind: alias
+    axis: authority_stance
+    value: criminal-protagonist
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:psych-2006
@@ -124,16 +181,23 @@ proposals:
     ref: tmdb-work:white-collar-2009
     uses: 1
 - proposal: coroner
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:izombie-2015
     uses: 1
 - proposal: cosy crime
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:monk-2002
     uses: 1
 - proposal: crime investigation
+  route:
+    kind: discard
+    reason: listed as non-taste in routing
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:izombie-2015
@@ -142,6 +206,10 @@ proposals:
     ref: tmdb-work:the-rookie-2018
     uses: 1
 - proposal: criminal consultant
+  route:
+    kind: alias
+    axis: lens
+    value: criminal-consultant
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:monk-2002
@@ -153,36 +221,51 @@ proposals:
     ref: tmdb-work:white-collar-2009
     uses: 1
 - proposal: cynicism
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: dark comedy
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: dating
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:gilmore-girls-2000
     uses: 1
 - proposal: death
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:mare-of-easttown-2021
     uses: 1
 - proposal: death of best friend
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: death of mother
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: detective
+  route:
+    kind: discard
+    reason: listed as non-taste in routing
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:mare-of-easttown-2021
@@ -194,61 +277,85 @@ proposals:
     ref: tmdb-work:wild-cards-2024
     uses: 1
 - proposal: detective agency
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:psych-2006
     uses: 1
 - proposal: diagnosis
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: disease
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: disrespectful
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:slow-horses-2022
     uses: 1
 - proposal: divorcee
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:mare-of-easttown-2021
     uses: 1
 - proposal: doctor
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: dramatic
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:the-rookie-2018
     uses: 1
 - proposal: dramedy
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:the-rookie-2018
     uses: 1
 - proposal: drug abuse
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:mare-of-easttown-2021
     uses: 1
 - proposal: drug addict
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: drug addiction
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: dysfunctional family
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
@@ -257,46 +364,66 @@ proposals:
     ref: tmdb-work:mare-of-easttown-2021
     uses: 1
 - proposal: enthusiastic
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:wild-cards-2024
     uses: 1
 - proposal: evil stepmother
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: ex-con
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:white-collar-2009
     uses: 1
 - proposal: excited
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: familiar
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:psych-2006
     uses: 1
 - proposal: fbi
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:white-collar-2009
     uses: 1
 - proposal: fear of intimacy
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: female detective
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:mare-of-easttown-2021
     uses: 1
 - proposal: female protagonist
+  route:
+    kind: alias
+    axis: lead_gender
+    value: female
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:gilmore-girls-2000
@@ -305,91 +432,128 @@ proposals:
     ref: tmdb-work:izombie-2015
     uses: 1
 - proposal: feminism
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: forger
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:white-collar-2009
     uses: 1
 - proposal: gentleman thief
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:white-collar-2009
     uses: 1
 - proposal: grand
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:izombie-2015
     uses: 1
 - proposal: grandparent grandchild relationship
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:gilmore-girls-2000
     uses: 1
 - proposal: grief
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: guilt
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: guilty conscience
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: high school
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:gilmore-girls-2000
     uses: 1
 - proposal: hilarious
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:psych-2006
     uses: 1
 - proposal: hospital
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: illness
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: interracial friendship
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:psych-2006
     uses: 1
 - proposal: investigation
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:mare-of-easttown-2021
     uses: 1
 - proposal: lapd
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:the-rookie-2018
     uses: 1
 - proposal: legal
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:elsbeth-2024
     uses: 1
 - proposal: lighthearted
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:wild-cards-2024
     uses: 1
 - proposal: london, england
+  route:
+    kind: metadata
+    field: setting_geo
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
@@ -398,181 +562,256 @@ proposals:
     ref: tmdb-work:slow-horses-2022
     uses: 1
 - proposal: loneliness
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: lonely woman
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: los angeles, california
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:the-rookie-2018
     uses: 1
 - proposal: loss of a friend
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: loss of mother
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: love
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:gilmore-girls-2000
     uses: 1
 - proposal: medical
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: medical drama
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: medical ethics
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: medical examination
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:izombie-2015
     uses: 1
 - proposal: medicine
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: memory transfer
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:izombie-2015
     uses: 1
 - proposal: mental disorders
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:monk-2002
     uses: 1
 - proposal: mi5
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:slow-horses-2022
     uses: 1
 - proposal: middle class
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:gilmore-girls-2000
     uses: 1
 - proposal: miniseries
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:mare-of-easttown-2021
     uses: 1
 - proposal: misanthrophy
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: mischievous
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:psych-2006
     uses: 1
 - proposal: morbid
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:izombie-2015
     uses: 1
 - proposal: morgue
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:izombie-2015
     uses: 1
 - proposal: mother daughter relationship
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:gilmore-girls-2000
     uses: 1
 - proposal: murder
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:mare-of-easttown-2021
     uses: 1
 - proposal: mysterious disappearance
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:mare-of-easttown-2021
     uses: 1
 - proposal: new york city
+  route:
+    kind: metadata
+    field: setting_geo
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:white-collar-2009
     uses: 1
 - proposal: obsessive compulsive disorder (ocd)
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:monk-2002
     uses: 1
 - proposal: passive aggression
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: patient
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: pennsylvania, usa
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:mare-of-easttown-2021
     uses: 1
 - proposal: playful
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:elsbeth-2024
     uses: 1
 - proposal: police
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:psych-2006
     uses: 1
 - proposal: police chase
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:the-rookie-2018
     uses: 1
 - proposal: police department
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:the-rookie-2018
     uses: 1
 - proposal: police detective
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:the-rookie-2018
     uses: 1
 - proposal: police drama
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:the-rookie-2018
     uses: 1
 - proposal: police officer
+  route:
+    kind: alias
+    axis: lens
+    value: cop
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:the-rookie-2018
     uses: 1
 - proposal: police procedural
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:monk-2002
@@ -581,86 +820,124 @@ proposals:
     ref: tmdb-work:psych-2006
     uses: 1
 - proposal: police training
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:the-rookie-2018
     uses: 1
 - proposal: priest
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: private detective
+  route:
+    kind: alias
+    axis: lens
+    value: private-eye
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:monk-2002
     uses: 1
 - proposal: private investigator
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:monk-2002
     uses: 1
 - proposal: private school
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:gilmore-girls-2000
     uses: 1
 - proposal: procedural
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:the-rookie-2018
     uses: 1
 - proposal: promiscuity
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: psychic power
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:psych-2006
     uses: 1
 - proposal: rare disease
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: san francisco, california
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:monk-2002
     uses: 1
 - proposal: scammer
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:wild-cards-2024
     uses: 1
 - proposal: seattle, washington
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:izombie-2015
     uses: 1
 - proposal: secret agent
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:slow-horses-2022
     uses: 1
 - proposal: single mother
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:gilmore-girls-2000
     uses: 1
 - proposal: sister sister relationship
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: sitcom
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: small town
+  route:
+    kind: alias
+    axis: setting_scale
+    value: small-town
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:gilmore-girls-2000
@@ -672,76 +949,108 @@ proposals:
     ref: tmdb:1415
     uses: 0
 - proposal: spy
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:slow-horses-2022
     uses: 1
 - proposal: stepmother
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:fleabag-2016
     uses: 1
 - proposal: street crime
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:the-rookie-2018
     uses: 1
 - proposal: sympathetic
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:monk-2002
     uses: 1
 - proposal: symptom
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: taunting
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: tense
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:mare-of-easttown-2021
     uses: 1
 - proposal: terrorism
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:slow-horses-2022
     uses: 1
 - proposal: therapist
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:mare-of-easttown-2021
     uses: 1
 - proposal: thought provoking
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: tortured genius
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:house-md-2004
     uses: 1
 - proposal: understated
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:monk-2002
     uses: 1
 - proposal: vibrant
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:psych-2006
     uses: 1
 - proposal: white collar criminal
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:white-collar-2009
     uses: 1
 - proposal: whodunit
+  route:
+    kind: alias
+    axis: mystery_mechanism
+    value: whodunit
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:mare-of-easttown-2021
@@ -750,6 +1059,8 @@ proposals:
     ref: tmdb:12570
     uses: 0
 - proposal: zombie
+  route:
+    kind: motif
   sources:
   - kind: tmdb-keyword
     ref: tmdb-work:izombie-2015

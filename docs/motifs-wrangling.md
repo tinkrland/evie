@@ -22,6 +22,30 @@ noise ("adoring", "amused" from one work each). that settles the shape
 of open question 28: a keyword enters the queue as a candidate only
 when it recurs; uses counts are the filter.
 
+## triage: keywords route to the axis they describe
+
+a harvested keyword is not automatically a motif. before anything is
+queued, `src/ingest/routing.py` triages each keyword against
+`data/motifs/routing.yaml` into one of:
+
+- **alias**: the keyword names an existing axis value ("small town" is
+  setting_scale/small-town, "whodunit" is mystery_mechanism/whodunit,
+  "buddy cop" is ensemble_shape/odd-couple, "criminal consultant" is
+  lens/criminal-consultant). on review it joins that value's alias
+  table; no new value is created.
+- **new-value**: the keyword names a value an axis lacks. a proposal
+  for that single axis only.
+- **metadata**: a place name is setting_geo geography, not a taste
+  value and not a motif.
+- **discard**: provenance tags ("based on novel or book"), generic
+  nouns, single-use adjectives.
+- **motif**: genuine freeform texture, the only bucket where a new
+  motif can emerge.
+
+first full triage (2026-11-03): 141 proposals -> 8 aliases, 3 metadata,
+10 discards, 120 still motifs. the ratio is the point: most harvested
+keywords were never motifs at all.
+
 rules: nothing auto-adopts. a proposal is a normalized lowercase
 string with sources and a uses count. merging is deterministic: dedupe
 by name, sources by ref, uses summed, output sorted. a proposal

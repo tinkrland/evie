@@ -1,0 +1,101 @@
+# deterministic keyword routing for harvested proposals.
+#
+# the point: a harvested string never lands in motifs by default just
+# because it was harvested. every keyword is triaged to what it
+# actually describes:
+#
+#   alias     - names an existing axis value. on review it joins that
+#               value's alias table; nothing new is created.
+#               e.g. "small town" is setting_scale/small-town.
+#   new-value - names a value the axis does not have yet. a proposal
+#               for that one axis only.
+#   motif     - genuine freeform narrative texture, no axis fits.
+#   metadata  - identity metadata, not taste (a place name is
+#               setting_geo geography, not a setting_scale value).
+#   discard   - not a taste signal: provenance tags, generic words.
+#
+# unmatched keywords default to motif (a pending proposal). nothing
+# ever auto-becomes an axis value.
+
+version: 1
+
+# keyword -> the axis it truly describes. value is compared against the
+# vocab: existing value means alias, missing value means new-value.
+# a null axis means discard regardless of value.
+routes:
+  whodunit:
+    axis: mystery_mechanism
+    value: whodunit
+  howdunnit:
+    axis: mystery_mechanism
+    value: howdunnit
+  small town:
+    axis: setting_scale
+    value: small-town
+  island:
+    axis: setting_scale
+    value: island
+  criminal consultant:
+    axis: lens
+    value: criminal-consultant
+  consultant:
+    axis: lens
+    value: consulting-detective
+  private detective:
+    axis: lens
+    value: private-eye
+  police officer:
+    axis: lens
+    value: cop
+  federal agent:
+    axis: lens
+    value: fed
+  legal drama:
+    axis: lens
+    value: legal
+  female protagonist:
+    axis: lead_gender
+    value: female
+  male protagonist:
+    axis: lead_gender
+    value: male
+  con man:
+    axis: authority_stance
+    value: criminal-protagonist
+  buddy cop:
+    axis: ensemble_shape
+    value: odd-couple
+  arms dealer:
+    axis: protagonist_gift
+    value: null
+  based on novel or book:
+    axis: null
+    value: null
+  based on comic:
+    axis: null
+    value: null
+  based on graphic novel:
+    axis: null
+    value: null
+
+# place names are metadata for setting_geo (schema allows a country or
+# region). never a setting_scale value and never a motif.
+locale_keywords:
+- california
+- london, england
+- new york city
+
+# not taste signals. provenance tags, format trivia, generic nouns, and
+# single-use adjectives that describe a scene rather than an experience.
+discard:
+- based on novel or book
+- based on comic
+- based on graphic novel
+- based on tv series
+- based on play or musical
+- colleague
+- crime investigation
+- detective
+- amused
+- adoring
+- alcoholism
