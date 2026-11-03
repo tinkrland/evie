@@ -140,11 +140,23 @@ read in this order:
 11. `docs/open-questions.md` - unresolved decisions. do not silently
     resolve these.
 
-## relation to moira's evie
+## where evie lives
 
-this branch of tinkrland/moira is evie's tree. evie's contract with
-moira lives in `docs/evie-contract.md`. this engine is the
-deterministic catalogue side of that contract: it decomposes works
-into explicit parts and never trains on user data. evie holds the
-per-persona taste context and reads this catalogue; the engine itself
-stays stateless.
+the engine has two homes, on purpose:
+
+- **github.com/tinkrland/evie**: the decoupled build of evie itself.
+  the `evie` branch there is this engine, and the sibling verticals
+  (`music`, `activities`) live as their own branches beside it. engine
+  work lands here first.
+- **tinkrland/moira, branch `evie`**: the persona-side mapping. moira's
+  persona integration reads the catalogue, and evie's contract with
+  moira lives in `docs/evie-contract.md`. this copy exists so moira can
+  build against evie without reaching across repos.
+
+both copies are the same engine; the verticals are branches because
+they share the engine core and share none of each other's axes.
+
+this engine is the deterministic catalogue side of the contract: it
+decomposes works into explicit parts and never trains on user data.
+evie holds the per-persona taste context and reads this catalogue; the
+engine itself stays stateless.
