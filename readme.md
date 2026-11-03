@@ -14,8 +14,11 @@ inference at query time. every result can be explained by pointing at
 the shared nodes.
 
 status: pre-alpha. the core engine loop is built and tested (build,
-tags, recommend; 55 tests). no consumer interface yet, no real
-catalogue yet: the seed corpus is the current work.
+tags, recommend, affinity; 88 tests). the cold-start structural prior
+(`src/build/affinity.py`) computes which axis values travel together
+from the governed catalogue alone, with recomputable explanations and
+recorded hashes. no consumer interface yet, no real catalogue yet: the
+seed corpus is the current work.
 
 ## the one-paragraph idea
 
@@ -130,17 +133,19 @@ read in this order:
 6. `docs/sources.md` - reference catalogues (tmdb, wikidata, open
    library) and the apps evie ingests from, with what each may and may
    not be used for
-7. `docs/prior-art/` - reviewed prior art from sibling projects
+7. `docs/affinity.md` - the cold-start structural prior: which axis
+   values travel together, computed from the catalogue alone
+8. `docs/prior-art/` - reviewed prior art from sibling projects
    (jewelfinity's affinity-map: structural affinity tables, union
    scoring, recomputable explanations)
-8. `docs/scenarios.md` - concrete acceptance scenarios the engine
+9. `docs/scenarios.md` - concrete acceptance scenarios the engine
    must pass
-9. `docs/agreement/` - the rubric agreement test: two taggers, same
+10. `docs/agreement/` - the rubric agreement test: two taggers, same
    five works, 80 percent gate before phase 2 tagging starts
-10. `agent.md` - rules for any ai agent working in this repo. read
+11. `agent.md` - rules for any ai agent working in this repo. read
    before touching anything.
-11. `buildplan.md` - phased plan with acceptance criteria
-12. `docs/open-questions.md` - unresolved decisions. do not silently
+12. `buildplan.md` - phased plan with acceptance criteria
+13. `docs/open-questions.md` - unresolved decisions. do not silently
     resolve these.
 
 ## where evie lives

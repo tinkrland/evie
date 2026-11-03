@@ -2,6 +2,8 @@
 
 usage (from repo root):
   python3 -m src.cli build [--works dir] [--vocab dir] [--db path]
+  python3 -m src.cli affinity [--works dir] [--config path] [--out path]
+  python3 -m src.cli affinity-check [--table path]
   python3 -m src.cli check [--works dir] [--vocab dir]
   python3 -m src.cli check-context context.yaml [--works dir] [--vocab dir]
   python3 -m src.cli dump work-id [--db path]
@@ -11,9 +13,17 @@ usage (from repo root):
 
 import argparse
 import sys
+from pathlib import Path
 
 import yaml
 
+from .build.affinity import (
+    build_table,
+    check_table,
+    dump_table,
+    load_affinity_config,
+    with_hashes,
+)
 from .build.compiler import compile_db, load_works, read_work
 from .build.vocab import catalog_error, load_vocab
 from .build.works import dump
@@ -24,6 +34,8 @@ default_config = "config/scoring.v0.yaml"
 default_vocab = "data/vocab"
 default_works = "data/works"
 default_db = "build/latent.db"
+default_affinity_config = "config/affinity.v0.yaml"
+default_affinity_table = "build/affinity-table.json"
 
 
 def _fail(messages):
@@ -54,6 +66,37 @@ def cmd_check_context(args):
     if errors:
         _fail(errors)
     print(f"ok: valid taste context ({len(doc.get('liked') or [])} liked works)")
+
+
+def cmd_affinity(args):
+    vocab = load_vocab(args.vocab)
+    works = load_works(args.works, vocab)
+    config = load_affinity_config(args.config)
+    table = with_hashes(build_table(works, config), works, config)
+    errors = check_table(table)
+    if errors:
+        _fail(errors)
+    Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+    Path(args.out).write_text(dump_table(table))
+    summary = table["summary"]
+    print(
+        f"affinity table: {summary['terms']} terms, {summary['pairs_published']} pairs, "
+        f"{summary['lonely_terms']} lonely -> {args.out}"
+    )
+    print(f"input_hash {table['input_hash'][:12]} output_hash {table['output_hash'][:12]}")
+
+
+def cmd_affinity_check(args):
+    import json
+
+    table = json.loads(Path(args.table).read_text())
+    errors = check_table(table)
+    if errors:
+        _fail(errors)
+    print(
+        f"ok: {table['summary']['terms']} terms, every neighbour recomputable from "
+        f"its explanation, output_hash verified"
+    )
 
 
 def cmd_dump(args):
@@ -93,6 +136,16 @@ def main(argv=None):
     add_source(p)
     p.add_argument("context")
     p.set_defaults(fn=cmd_check_context)
+
+    p = sub.add_parser("affinity", help="build the structural affinity table (cold-start prior)")
+    add_source(p)
+    p.add_argument("--config", default=default_affinity_config)
+    p.add_argument("--out", default=default_affinity_table)
+    p.set_defaults(fn=cmd_affinity)
+
+    p = sub.add_parser("affinity-check", help="re-verify a published affinity table")
+    p.add_argument("--table", default=default_affinity_table)
+    p.set_defaults(fn=cmd_affinity_check)
 
     p = sub.add_parser("dump", help="print one work from the database in canonical yaml")
     p.add_argument("work_id")

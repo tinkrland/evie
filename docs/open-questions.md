@@ -73,8 +73,16 @@ unresolved decisions. agents must not resolve these on their own. add new ones h
     affinity-map prior art): axis-value affinity computed from the
     governed vocabulary alone, versioned, blended deterministically
     with our measured keyword co-occurrence.
+    >> resolved 2026-11-03: `src/build/affinity.py` v0 built (catalog
+    co-occurrence cosine, hashes, recomputable explanations, CLI
+    `affinity` / `affinity-check`). remaining thread: blending the
+    queue's keyword co-occurrence into the prior (see docs/affinity.md
+    "next").
 
 31. (2026-11-03) make the confusable cross-check executable: a test
     asserting the declared boundary pairs (gift_cover/world,
     family_role/ensemble_shape, island/coastal-town) remain distinct
     in vocab and routing.
+    >> resolved 2026-11-03: tests/test_boundaries.py asserts every
+    declared boundary pair is disjoint, that routing keeps locales out
+    of taste axes, and that vocab values stay normalised.
