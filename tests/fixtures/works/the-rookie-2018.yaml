@@ -96,6 +96,10 @@ tags:
   - value: none
     role: primary
     evidence: competent and hardworking, no special endowment
+  family_role:
+  - value: backdrop
+    role: primary
+    evidence: nolan's personal life surfaces around the job, never drives it
   romance_dynamic:
   - value: partners-to-lovers
     role: primary

@@ -99,3 +99,7 @@ tags:
   - value: none
     role: primary
     evidence: ordinary craft, built by experience
+  family_role:
+  - value: co-primary
+    role: primary
+    evidence: the grandson custody fight is a primary plot, not texture

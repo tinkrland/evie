@@ -93,3 +93,7 @@ tags:
   - value: none
     role: primary
     evidence: professional competence without an endowment
+  family_role:
+  - value: unknown
+    role: primary
+    evidence: not observed; left unknown rather than guessed

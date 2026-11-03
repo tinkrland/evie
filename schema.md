@@ -84,7 +84,7 @@ notes:
 ```
 genre_tradition  multi   crime, noir, cozy-mystery, legal, thriller, spy, fantasy, sci-fi, romance, horror, drama, comedy ...
 setting_geo      single  country or region of the story world
-setting_scale    single  rural | small-town | island | suburban | urban | metropolis
+setting_scale    single  rural | coastal-town | small-town | island | suburban | urban-city | metropolis
 setting_era      range   years the story is set in
 creators         multi   names (never part of dna_score)
 lead_performers  multi   names (never part of dna_score; enables 'watched for the actor' cases)
@@ -96,6 +96,7 @@ lead_performers  multi   names (never part of dna_score; enables 'watched for th
 crime_relation     single  solving | committing | defending | combination
 
 gift_origin        single  none | nature | nurture | both | acquired      (core layer 2)
+family_role        single  none | backdrop | subplot | co-primary | primary      (core layer 2)
 gift_kind          multi   eidetic-memory | hyperthymesia | high-iq | hyper-observation | supernatural-gift  (optional: tagged when an endowment exists)
 gift_cover         single  none | skill-as-supernatural | supernatural-as-mundane  (optional: tagged when a gift is masked)
 mystery_mechanism  multi   whodunit | howdunnit | whydunnit | proving-it | inverted | caper | none
@@ -107,6 +108,9 @@ legal_role         multi   (only if crime_relation includes defending) prosecuti
 notes:
 - `lens` is the job or vantage point. `authority_stance` is the relationship to power. keep them separate: a consulting-detective lens can pair with several stances. lens is multi-select: psych is private-eye and consulting-detective at once.
 - the consultant value is split: `criminal-consultant` is a criminal consulting for law enforcement (white collar); `consulting-detective` is a civilian detective (sherlock, ludwig, monk). `sheriff` covers rural county law enforcement, which is a different institution than an urban precinct. forensic splits the same way: `forensic-scientist` is the protagonist focus (bones); `forensic-support` is the accompanying csi-style role inside law enforcement.
+- `family_role` asks how much of the story is family: primary plot,
+  co-primary, subplot, backdrop, or none. it is about literal or
+  accepted kin, never the team (that is ensemble_shape).
 - `setting_scale` matters because the community changes the show: rural means sheriffs and spread-out jurisdictions, metropolis means precincts, and small-town means a recurring community cast (stars hollow, brokenwood mysteries), and island is its own texture: a water-bound community where geography shapes everything (death in paradise, shetland).
 - `proving-it` marks the later, evidence-and-courtroom phase of the case rather than the discovery phase.
 - `combination` is for works that mix solving, committing or defending in the same run. white collar is the canonical case (neal consults for the fbi and keeps committing); wild cards is the second (max cons under a plea agreement while solving cases with the service).

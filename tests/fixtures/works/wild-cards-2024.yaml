@@ -88,6 +88,10 @@ tags:
   - value: nurture
     role: primary
     evidence: con artistry is learned craft, neal caffrey's parallel
+  family_role:
+  - value: unknown
+    role: primary
+    evidence: not observed; left unknown rather than guessed
   gift_cover:
   - value: none
     role: primary

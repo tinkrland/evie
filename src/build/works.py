@@ -39,7 +39,7 @@ core_axes = (
     "tone", "authority_stance", "protagonist_gift", "ensemble_shape", "fantasy",
     "structure", "resolution", "stakes", "world", "tech_mediation",
     "lead_gender", "lead_manner", "lead_flaw_treatment", "romantic_arc",
-    "gift_origin",
+    "gift_origin", "family_role",
 )
 # optional axes exist in the vocab but are required only when applicable
 optional_axes = ("romance_dynamic", "gift_kind", "gift_cover")

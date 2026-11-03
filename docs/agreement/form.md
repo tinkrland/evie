@@ -43,6 +43,9 @@ helps when we reconcile disagreements.
 - gift_cover (pick 1, only if there is a gift): none /
   skill-as-supernatural / supernatural-as-mundane
   - your pick:
+- family_role (pick 1): none / backdrop / subplot / co-primary /
+  primary
+  - your pick:
 ## the mentalist (2008)
 
 - fantasy (pick 1-2): competence / justice / puzzle / belonging /
@@ -81,6 +84,9 @@ helps when we reconcile disagreements.
   - your pick:
 - gift_cover (pick 1, only if there is a gift): none /
   skill-as-supernatural / supernatural-as-mundane
+  - your pick:
+- family_role (pick 1): none / backdrop / subplot / co-primary /
+  primary
   - your pick:
 ## high potential (2024)
 
@@ -121,6 +127,9 @@ helps when we reconcile disagreements.
 - gift_cover (pick 1, only if there is a gift): none /
   skill-as-supernatural / supernatural-as-mundane
   - your pick:
+- family_role (pick 1): none / backdrop / subplot / co-primary /
+  primary
+  - your pick:
 ## ncis (2003)
 
 - fantasy (pick 1-2): competence / justice / puzzle / belonging /
@@ -160,6 +169,9 @@ helps when we reconcile disagreements.
 - gift_cover (pick 1, only if there is a gift): none /
   skill-as-supernatural / supernatural-as-mundane
   - your pick:
+- family_role (pick 1): none / backdrop / subplot / co-primary /
+  primary
+  - your pick:
 ## blue bloods (2010)
 
 - fantasy (pick 1-2): competence / justice / puzzle / belonging /
@@ -198,4 +210,7 @@ helps when we reconcile disagreements.
   - your pick:
 - gift_cover (pick 1, only if there is a gift): none /
   skill-as-supernatural / supernatural-as-mundane
+  - your pick:
+- family_role (pick 1): none / backdrop / subplot / co-primary /
+  primary
   - your pick:

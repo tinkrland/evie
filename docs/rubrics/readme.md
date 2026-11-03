@@ -16,6 +16,7 @@ status:
 - gift_kind: draft (awaiting owner review)
 - gift_cover: draft (awaiting owner review)
 - detecting_subject: draft (awaiting owner review)
+- family_role: draft (awaiting owner review)
 - all other axes: not written yet
 
 these three were written first per buildplan.md: they carry the most

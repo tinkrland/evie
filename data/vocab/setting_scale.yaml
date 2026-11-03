@@ -1,13 +1,15 @@
-# where the story lives: the community scale of the setting. matters
-# because rural law means sheriffs, metropolises mean precincts, and
-# small towns mean a recurring community cast.
+# where the story lives: the community scale and coastal geography of the
+# setting. rural means sheriffs, urban-city means precincts, small-town
+# means a recurring community cast, coastal-town means water in the
+# everyday texture without island isolation.
 axis: setting_scale
 layer: 1
 select: single
 values:
 - rural
+- coastal-town
 - small-town
-- suburban
-- urban
 - island
+- suburban
+- urban-city
 - metropolis

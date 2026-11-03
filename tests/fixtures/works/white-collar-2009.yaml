@@ -99,3 +99,7 @@ tags:
   - value: nurture
     role: primary
     evidence: 'his edge is learned craft: forgeries, languages, cons; no innate endowment'
+  family_role:
+  - value: none
+    role: primary
+    evidence: neal's family is absent; peter is a friend and handler, not family

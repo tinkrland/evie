@@ -94,6 +94,10 @@ tags:
   - value: none
     role: primary
     evidence: no special edge; wit is not an endowment
+  family_role:
+  - value: primary
+    role: primary
+    evidence: the mother-daughter relationship is the plot, not a subplot of one
   romance_dynamic:
   - value: friends-to-lovers
     role: primary

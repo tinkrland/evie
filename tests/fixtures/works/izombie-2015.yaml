@@ -100,6 +100,10 @@ tags:
   - value: acquired
     role: primary
     evidence: the visions came with the zombie infection, not birth or training
+  family_role:
+  - value: backdrop
+    role: primary
+    evidence: family threads exist but stay peripheral to the cases
   gift_cover:
   - value: supernatural-as-mundane
     role: primary

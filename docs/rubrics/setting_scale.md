@@ -25,6 +25,16 @@ evidence, or as motifs, not as extra values.
 - counterexample: a coastal mainland town. coastlines are not islands:
   tag the community, not the scenery.
 
+### coastal-town
+- definition: a walkable seaside town where the water is in the
+  everyday texture (the pier, the boats, the tourists) without the
+  isolation of an island. santa barbara in psych.
+- boundary with island: a coastal town is connected by road; people
+  drive out. an island is only leavable by water or air, and the show
+  treats that as a fact of life.
+- counterexample: a city that happens to sit on a coast. that is
+  urban-city; the water is scenery, not texture.
+
 ### small-town
 - definition: a small community where the cast recurs: the cafe, the
   pub, the mayor, the neighbors. stars hollow, brokenwood mysteries,
@@ -38,7 +48,7 @@ evidence, or as motifs, not as extra values.
 ### suburban
 - definition: commuter belt, residential sprawl around a city.
 
-### urban
+### urban-city
 - definition: a city, but the city is not the story's spine.
 
 ### metropolis

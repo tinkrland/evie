@@ -93,6 +93,10 @@ tags:
   - value: none
     role: primary
     evidence: no special edge
+  family_role:
+  - value: co-primary
+    role: primary
+    evidence: the family grief and the sister relationship carry the show alongside the romance
   romance_dynamic:
   - value: forbidden
     role: primary

@@ -28,6 +28,7 @@ rubric evidence rule. do not reconcile before both sets exist.
 - gift_kind: high-iq (the puzzle-setter's mind is the show's premise)
 - gift_cover: none (his puzzles are open; the
   masquerade is his brother's identity, not his skill)
+- family_role: co-primary (finding his missing twin brother james IS the premise, not a subplot)
 
 ## the mentalist (2008)
 
@@ -55,6 +56,7 @@ rubric evidence rule. do not reconcile before both sets exist.
 - gift_cover: none (patrick no longer sells
   the psychic act; the fake-psychic past is backstory, not a current
   cover)
+- family_role: backdrop (the murdered wife and child are the wound in his past, revisited but never the week-to-week plot)
 
 ## high potential (2024)
 
@@ -79,6 +81,7 @@ rubric evidence rule. do not reconcile before both sets exist.
 - gift_kind: high-iq (the canonical owner example)
 - gift_cover: none (morgan's gifts are known
   for what they are)
+- family_role: co-primary (raising three kids on a cleaner's schedule is half the show's engine)
 
 ## ncis (2003)
 
@@ -104,6 +107,7 @@ rubric evidence rule. do not reconcile before both sets exist.
 - gift_origin: none (an ensemble of competent professionals)
 - gift_kind: untagged
 - gift_cover: none (no gift to mask)
+- family_role: backdrop (gibbs' family history recurs; the team is found family, not kin, so that stays with ensemble_shape)
 
 ## blue bloods (2010)
 
@@ -126,6 +130,7 @@ rubric evidence rule. do not reconcile before both sets exist.
 - gift_origin: none (competence built the normal way)
 - gift_kind: untagged
 - gift_cover: none (no gift to mask)
+- family_role: primary (the sunday dinner is the spine and three generations are the cast: the rubric's canonical case)
 
 note: lens and setting_scale sections were added 2026-10-18 after the
 owner's taxonomy feedback, before the owner form was submitted. still

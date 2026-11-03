@@ -105,3 +105,7 @@ tags:
   - value: nurture
     role: primary
     evidence: his edge is forty years of learned tradecraft, no endowment
+  family_role:
+  - value: none
+    role: primary
+    evidence: no literal family thread; the found family is the team

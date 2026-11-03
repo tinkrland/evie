@@ -99,6 +99,10 @@ tags:
   - value: nature
     role: primary
     evidence: innate pattern-spotting, never trained
+  family_role:
+  - value: backdrop
+    role: primary
+    evidence: her marriage is backstory texture
   gift_kind:
   - value: hyper-observation
     role: primary

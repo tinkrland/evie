@@ -96,7 +96,7 @@ config always produce the same answer, byte for byte.
 
 ## how it works, briefly
 
-- **vocab**: 26 axes in `data/vocab/`. 15 core layer 2 axes every work
+- **vocab**: 27 axes in `data/vocab/`. 16 core layer 2 axes every work
   carries (tone, fantasy, authority_stance, romantic arc and friends),
   one proposal-only axis (motifs, wrangled ao3-style with alias
   provenance), and layer 1 classification (genre tradition, the crime
@@ -120,10 +120,10 @@ read in this order:
 3. `taste-context.md` - the one user-specific input: how incidental,
    priority and avoid are declared
 4. `docs/rubrics/` - tagging rubrics. the schema is the product, and
-   rubrics are how the schema stays honest. twelve drafted so far:
+   rubrics are how the schema stays honest. thirteen drafted so far:
    fantasy, authority_stance, lead_flaw_treatment, romantic_arc,
    romance_dynamic, lens, setting_scale, mystery_mechanism,
-   gift_origin, gift_kind, gift_cover, detecting_subject.
+   gift_origin, gift_kind, gift_cover, detecting_subject, family_role.
 5. `docs/motifs-wrangling.md` - ao3-style motif governance:
    canonical values, alias tables, provenance preserved, reviewed
    proposals only

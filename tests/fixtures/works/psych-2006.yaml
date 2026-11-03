@@ -20,7 +20,7 @@ setting_geo: us
 lead_performers:
 - james roday rodriguez
 - dule hill
-setting_scale: urban
+setting_scale: coastal-town
 crime_module:
   crime_relation: solving
   mystery_mechanism:
@@ -100,6 +100,10 @@ tags:
   - value: both
     role: primary
     evidence: born with eidetic recall AND drilled by his detective father
+  family_role:
+  - value: subplot
+    role: primary
+    evidence: henry's training and approval run as a recurring subplot under every case
   gift_cover:
   - value: skill-as-supernatural
     role: primary

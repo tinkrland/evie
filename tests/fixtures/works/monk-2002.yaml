@@ -19,7 +19,7 @@ genre_tradition:
 setting_geo: us
 lead_performers:
 - tony shalhoub
-setting_scale: urban
+setting_scale: urban-city
 crime_module:
   crime_relation: solving
   mystery_mechanism:
@@ -101,6 +101,10 @@ tags:
   - value: nature
     role: primary
     evidence: his observation is innate, inseparable from who he is
+  family_role:
+  - value: co-primary
+    role: primary
+    evidence: trudy's murder is the wound the whole series runs on
   gift_kind:
   - value: hyper-observation
     role: primary

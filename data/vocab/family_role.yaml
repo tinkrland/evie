@@ -1,0 +1,9 @@
+axis: family_role
+layer: 2
+select: single
+values:
+- none
+- backdrop
+- subplot
+- co-primary
+- primary
