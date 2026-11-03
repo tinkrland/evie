@@ -120,20 +120,24 @@ read in this order:
 3. `taste-context.md` - the one user-specific input: how incidental,
    priority and avoid are declared
 4. `docs/rubrics/` - tagging rubrics. the schema is the product, and
-   rubrics are how the schema stays honest. five drafted so far:
+   rubrics are how the schema stays honest. twelve drafted so far:
    fantasy, authority_stance, lead_flaw_treatment, romantic_arc,
-   romance_dynamic.
+   romance_dynamic, lens, setting_scale, mystery_mechanism,
+   gift_origin, gift_kind, gift_cover, detecting_subject.
 5. `docs/motifs-wrangling.md` - ao3-style motif governance:
    canonical values, alias tables, provenance preserved, reviewed
    proposals only
-6. `docs/scenarios.md` - concrete acceptance scenarios the engine
+6. `docs/sources.md` - reference catalogues (tmdb, wikidata, open
+   library) and the apps evie ingests from, with what each may and may
+   not be used for
+7. `docs/scenarios.md` - concrete acceptance scenarios the engine
    must pass
-7. `docs/agreement/` - the rubric agreement test: two taggers, same
+8. `docs/agreement/` - the rubric agreement test: two taggers, same
    five works, 80 percent gate before phase 2 tagging starts
-8. `agent.md` - rules for any ai agent working in this repo. read
+9. `agent.md` - rules for any ai agent working in this repo. read
    before touching anything.
-9. `buildplan.md` - phased plan with acceptance criteria
-10. `docs/open-questions.md` - unresolved decisions. do not silently
+10. `buildplan.md` - phased plan with acceptance criteria
+11. `docs/open-questions.md` - unresolved decisions. do not silently
     resolve these.
 
 ## relation to moira's evie

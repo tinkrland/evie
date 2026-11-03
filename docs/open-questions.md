@@ -58,3 +58,13 @@ unresolved decisions. agents must not resolve these on their own. add new ones h
     the protagonist's base country, or make it multi. owner decision
     needed. for now hidden assets is tagged ie with the antwerp thread
     recorded here.
+
+27. (2026-11-03) which ingest source ships first? proposal: letterboxd
+    csv (film side) and trakt api (the only friendly tv api left).
+
+28. (2026-11-03) tmdb keyword harvest: adopt keywords as motif
+    candidates wholesale into the wrangling queue, or only when a
+    keyword recurs often enough to matter?
+
+29. (2026-11-03) tv time is shutting down. offer a one-time migration
+    path for its export files in ingest v1, or skip the dead platform?
