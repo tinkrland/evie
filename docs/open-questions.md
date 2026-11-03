@@ -73,11 +73,13 @@ unresolved decisions. agents must not resolve these on their own. add new ones h
     affinity-map prior art): axis-value affinity computed from the
     governed vocabulary alone, versioned, blended deterministically
     with our measured keyword co-occurrence.
-    >> resolved 2026-11-03: `src/build/affinity.py` v0 built (catalog
+    >> resolved 2026-11-03: `src/build/affinity.py` built (catalog
     co-occurrence cosine, hashes, recomputable explanations, CLI
-    `affinity` / `affinity-check`). remaining thread: blending the
-    queue's keyword co-occurrence into the prior (see docs/affinity.md
-    "next").
+    `affinity` / `affinity-check`), and the harvest layer followed the
+    same day (config/affinity.v1.yaml): keyword co-occurrence admitted
+    through alias routes only, blended as a weighted mean over present
+    layers, with per-layer provenance. currently 4 of 436 pairs carry
+    harvest evidence; it grows with routing coverage.
 
 31. (2026-11-03) make the confusable cross-check executable: a test
     asserting the declared boundary pairs (gift_cover/world,

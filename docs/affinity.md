@@ -52,7 +52,7 @@ padded with weak matches. nothing invents coverage.
    the test suite includes a tampering test: a score that cannot be
    recomputed must fail the check.
 
-## knobs (config/affinity.v0.yaml)
+## knobs (config/affinity.v1.yaml)
 
 - `min_pair_works`: how many works a pair must share to be published.
   1 is honest at this catalogue size; raise it as the catalogue grows and
@@ -62,6 +62,9 @@ padded with weak matches. nothing invents coverage.
 - `score_rounding_decimals`: rounding before hashing, so float noise
   cannot make two identical runs disagree.
 - `exclude_values`: sentinels that are never evidence.
+- `layers.*.weight`: how much each evidence layer counts (see above).
+  setting the harvest weight to 0 disables the layer without deleting
+  the code path.
 
 changing any knob is a config version bump and changes the output hash,
 by construction.
@@ -85,9 +88,32 @@ python3 -m src.cli affinity-check
 the table is written to `build/affinity-table.json`. it is a build
 artifact, regenerated from source, never edited by hand.
 
-## next
+## the harvest layer (config/affinity.v1.yaml)
 
-blend the measured keyword co-occurrence from `data/motifs/queue.yaml`
-into this prior deterministically: same formula, second input, clearly
-labelled provenance per pair so a neighbour can say whether it came from
-the catalogue or from harvested co-occurrence.
+the prior now blends two evidence layers:
+
+- **catalog** (weight 1.0): the authored tags, as described above.
+- **harvest** (weight 0.5): co-occurrence of tmdb keywords, admitted
+  only through `routing.yaml` alias routes that name an *existing* axis
+  value. a motif proposal is not a value yet, and metadata or discarded
+  keywords are not taste evidence at all, so none of them enter the
+  graph.
+
+score = sum(weight x layer_score) / sum(weight) over the layers that
+actually have shared works for that pair. an absent layer is **absent**,
+never a zero dragging the number down, and every published pair carries
+its layers in `explain.layers`, each with its own `shared_works`,
+supports, weight and score. the check script re-verifies both the layer
+scores and the blend.
+
+what it looks like today: 4 of 436 pairs carry harvest evidence, e.g.
+`authority_stance/criminal-protagonist <-> lens/criminal-consultant`
+(shared: psych, white collar, from tmdb's "criminal consultant"
+keyword). that is small on purpose, and it is also a warning the layer
+makes visible: tmdb's keyword is loose about psych, and the provenance
+says so in plain sight rather than hiding inside an aggregate.
+
+the harvest layer grows as `routing.yaml` grows. it is wired now so it
+accumulates evidence from every future harvest instead of being a
+rewrite later. no user signal enters it: this is catalogue-adjacent
+metadata, still nobody's taste.

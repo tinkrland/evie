@@ -21,6 +21,7 @@ from .build.affinity import (
     build_table,
     check_table,
     dump_table,
+    harvest_terms,
     load_affinity_config,
     with_hashes,
 )
@@ -34,7 +35,7 @@ default_config = "config/scoring.v0.yaml"
 default_vocab = "data/vocab"
 default_works = "data/works"
 default_db = "build/latent.db"
-default_affinity_config = "config/affinity.v0.yaml"
+default_affinity_config = "config/affinity.v1.yaml"
 default_affinity_table = "build/affinity-table.json"
 
 
@@ -72,7 +73,14 @@ def cmd_affinity(args):
     vocab = load_vocab(args.vocab)
     works = load_works(args.works, vocab)
     config = load_affinity_config(args.config)
-    table = with_hashes(build_table(works, config), works, config)
+    harvest = None
+    harvest_meta = config["layers"].get("harvest") or {}
+    if harvest_meta.get("weight"):
+        harvest = harvest_terms(
+            harvest_meta.get("source"), harvest_meta.get("routing"), vocab, config
+        )
+        harvest = {wid: terms for wid, terms in harvest.items() if terms}
+    table = with_hashes(build_table(works, config, harvest), works, config)
     errors = check_table(table)
     if errors:
         _fail(errors)

@@ -14,11 +14,12 @@ inference at query time. every result can be explained by pointing at
 the shared nodes.
 
 status: pre-alpha. the core engine loop is built and tested (build,
-tags, recommend, affinity; 88 tests). the cold-start structural prior
-(`src/build/affinity.py`) computes which axis values travel together
-from the governed catalogue alone, with recomputable explanations and
-recorded hashes. no consumer interface yet, no real catalogue yet: the
-seed corpus is the current work.
+tags, recommend, affinity; 92 tests). the cold-start structural prior
+(`src/build/affinity.py`) computes which axis values travel together,
+blending authored tags with harvested keyword co-occurrence in two
+provenanced layers, with recomputable explanations and recorded hashes.
+no consumer interface yet, no real catalogue yet: the seed corpus is
+the current work.
 
 ## the one-paragraph idea
 

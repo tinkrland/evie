@@ -1,0 +1,34 @@
+# structural affinity, versioned. every knob lives here, never in a code
+# constant. changing any value is a config version bump and changes the
+# output hash (see docs/affinity.md).
+#
+# affinity.v1 adds the harvest layer: keyword co-occurrence from the tmdb
+# harvest queue, blended deterministically with the catalogue layer, with
+# per-layer provenance so any published pair can say where its evidence
+# came from.
+version: affinity.v1
+
+scoring:
+  # cosine over work incidence: shared works / sqrt(support_a * support_b)
+  score: cosine_incidence
+  min_score: 0.0
+  # a pair must appear in at least this many works to be published.
+  min_pair_works: 1
+  top_k: 8
+  score_rounding_decimals: 6
+
+# evidence layers, blended as sum(weight*score)/sum(weight) over the
+# layers that actually have shared works for a pair. a layer with no
+# shared works is absent, never a zero that drags the score down.
+layers:
+  catalog:
+    weight: 1.0
+    source: authored tags
+  harvest:
+    weight: 0.5
+    source: data/motifs/queue.yaml
+    routing: data/motifs/routing.yaml
+
+# values that are never evidence: the prime-directive sentinels.
+exclude_values:
+- unknown

@@ -44,14 +44,20 @@ def test_every_neighbour_is_recomputable_from_its_explanation():
 def test_a_tampered_score_is_caught():
     broken = table()
     neighbour = next(
-        n
-        for row in broken["terms"]
-        for n in row["neighbours"]
-        if n["explain"]["shared_works"]
+        n for row in broken["terms"] for n in row["neighbours"] if n["explain"]["layers"]
     )
     neighbour["score"] = 0.999999
     errors = check_table(broken)
     assert errors, "the check must not trust a score it cannot recompute"
+
+
+def test_a_tampered_layer_is_caught():
+    broken = table()
+    neighbour = next(
+        n for row in broken["terms"] for n in row["neighbours"] if n["explain"]["layers"]
+    )
+    neighbour["explain"]["layers"][0]["score"] = 0.123456
+    assert check_table(broken), "a layer score must recompute from its own numbers"
 
 
 def test_scoring_runs_over_the_union_not_per_axis():
@@ -124,6 +130,60 @@ def test_published_table_on_disk_is_self_consistent():
         return
     published = json.loads(path.read_text())
     assert check_table(published) == []
+
+
+def test_harvest_layer_is_provenanced_and_optional():
+    from src.build.affinity import harvest_terms
+
+    v1 = load_affinity_config(root / "config" / "affinity.v1.yaml")
+    harvest = harvest_terms(
+        root / "data" / "motifs" / "queue.yaml",
+        root / "data" / "motifs" / "routing.yaml",
+        vocab,
+        v1,
+    )
+    harvest = {wid: terms for wid, terms in harvest.items() if terms}
+    assert harvest, "the queue should yield harvest terms through alias routes"
+    built = with_hashes(build_table(works, v1, harvest), works, v1)
+    names = {
+        layer["name"]
+        for row in built["terms"]
+        for n in row["neighbours"]
+        for layer in n["explain"]["layers"]
+    }
+    assert names == {"catalog", "harvest"} or names == {"catalog"}
+    assert built["summary"]["pairs_with_harvest_evidence"] >= 0
+    assert check_table(built) == []
+
+
+def test_absent_layer_is_absent_not_zero():
+    v1 = load_affinity_config(root / "config" / "affinity.v1.yaml")
+    harvest = {"psych-2006": [("lens", "private-eye"), ("lead_gender", "male")]}
+    built = build_table(works, v1, harvest)
+    row = next(r for r in built["terms"] if r["term"] == ["lens", "private-eye"])
+    lone = [n for n in row["neighbours"] if n["term"] == ["lead_gender", "male"]]
+    if lone:
+        layer_names = [layer["name"] for layer in lone[0]["explain"]["layers"]]
+        assert "harvest" in layer_names
+        # no zero-weight padding: only layers with shared works are listed
+        assert all(layer["shared"] > 0 for layer in lone[0]["explain"]["layers"])
+
+
+def test_zero_weight_disables_the_harvest_layer():
+    v1 = load_affinity_config(root / "config" / "affinity.v1.yaml")
+    quiet = dict(v1)
+    quiet["layers"] = {
+        "catalog": dict(v1["layers"]["catalog"]),
+        "harvest": dict(v1["layers"]["harvest"], weight=0.0),
+    }
+    built = build_table(works, quiet, {"psych-2006": [("lens", "private-eye")]})
+    names = {
+        layer["name"]
+        for row in built["terms"]
+        for n in row["neighbours"]
+        for layer in n["explain"]["layers"]
+    }
+    assert names == {"catalog"}
 
 
 def test_score_is_cosine_over_incidence():
