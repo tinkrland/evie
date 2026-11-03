@@ -68,3 +68,13 @@ unresolved decisions. agents must not resolve these on their own. add new ones h
 
 29. (2026-11-03) tv time is shutting down. offer a one-time migration
     path for its export files in ingest v1, or skip the dead platform?
+
+30. (2026-11-03) adopt a structural affinity table (jewelfinity
+    affinity-map prior art): axis-value affinity computed from the
+    governed vocabulary alone, versioned, blended deterministically
+    with our measured keyword co-occurrence.
+
+31. (2026-11-03) make the confusable cross-check executable: a test
+    asserting the declared boundary pairs (gift_cover/world,
+    family_role/ensemble_shape, island/coastal-town) remain distinct
+    in vocab and routing.

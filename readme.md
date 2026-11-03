@@ -130,14 +130,17 @@ read in this order:
 6. `docs/sources.md` - reference catalogues (tmdb, wikidata, open
    library) and the apps evie ingests from, with what each may and may
    not be used for
-7. `docs/scenarios.md` - concrete acceptance scenarios the engine
+7. `docs/prior-art/` - reviewed prior art from sibling projects
+   (jewelfinity's affinity-map: structural affinity tables, union
+   scoring, recomputable explanations)
+8. `docs/scenarios.md` - concrete acceptance scenarios the engine
    must pass
-8. `docs/agreement/` - the rubric agreement test: two taggers, same
+9. `docs/agreement/` - the rubric agreement test: two taggers, same
    five works, 80 percent gate before phase 2 tagging starts
-9. `agent.md` - rules for any ai agent working in this repo. read
+10. `agent.md` - rules for any ai agent working in this repo. read
    before touching anything.
-10. `buildplan.md` - phased plan with acceptance criteria
-11. `docs/open-questions.md` - unresolved decisions. do not silently
+11. `buildplan.md` - phased plan with acceptance criteria
+12. `docs/open-questions.md` - unresolved decisions. do not silently
     resolve these.
 
 ## where evie lives
