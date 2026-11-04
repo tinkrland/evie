@@ -71,7 +71,7 @@ context, and they survive services shutting down, which they keep doing
 | `netflix/` | tv + film | file export (viewing activity) | designed |
 | `tvtime/` | tv | file export (community extractors; service shutting down) | designed |
 | `storygraph/` | books | file export (csv) | designed |
-| `goodreads/` | books | file export (csv; api retired 2020) | designed |
+| `goodreads/` | books | file export (csv; api retired 2020) | verified |
 | `fable/` | books | file export (to verify) | designed |
 | `pagebound/` | books | mobile app, export to verify | designed |
 | `serializd/` | tv + film | verify export or api | designed |
