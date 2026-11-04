@@ -63,8 +63,8 @@ context, and they survive services shutting down, which they keep doing
 
 | folder | medium | route | status |
 |---|---|---|---|
-| `letterboxd/` | film | file export (csv) | designed |
-| `trakt/` | tv + film | api (oauth) | designed |
+| `letterboxd/` | film | file export (csv) | **verified** (adapter + tests) |
+| `trakt/` | tv + film | api (oauth) | **verified** (adapter tested against an injected payload; live call untested) |
 | `simkl/` | tv + film | api | designed |
 | `plex/` | tv + film | api (server) | designed |
 | `jellyfin/` | tv + film | api (open source) | designed |
@@ -81,8 +81,12 @@ context, and they survive services shutting down, which they keep doing
 status means: `designed` (spec written, route plausible, no code),
 `verified` (adapter exists and passes its tests), `blocked on facts` (the
 source was named by the owner but its route is unverified, so the folder
-records the questions rather than assuming answers). nothing here is
-verified yet.
+records the questions rather than assuming answers).
+
+verified so far: letterboxd (file export, tested offline) and trakt (api,
+tested against an injected payload; the live call needs a token and stays
+untested until one exists). code lives on the `evie` branch under
+`src/ingest/`, documented in `docs/imports.md`.
 
 ## what an adapter must refuse
 
