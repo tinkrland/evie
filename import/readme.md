@@ -60,10 +60,16 @@ context, and they survive services shutting down, which they keep doing
 | `tvtime/` | tv | file export (community extractors; service shutting down) | designed |
 | `storygraph/` | books | file export (csv) | designed |
 | `goodreads/` | books | file export (csv; api retired 2020) | designed |
+| `fable/` | books | file export (to verify) | designed |
+| `pagebound/` | books | unknown, verify | blocked on facts |
+| `serializd/` | tv + film | verify export or api | designed |
+| `repov/` | tv | unknown, verify | blocked on facts |
 
-status means: `designed` (spec written, no code), `verified` (adapter
-exists and passes its tests), `blocked` (needs something we do not
-have). nothing here is verified yet.
+status means: `designed` (spec written, route plausible, no code),
+`verified` (adapter exists and passes its tests), `blocked on facts` (the
+source was named by the owner but its route is unverified, so the folder
+records the questions rather than assuming answers). nothing here is
+verified yet.
 
 ## what an adapter must refuse
 
