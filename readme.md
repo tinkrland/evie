@@ -86,6 +86,18 @@ pre-alpha. branch scaffolded, nothing built. the vocabulary will be
 authored the way evie's was: values frozen, evidence per tag, rubrics
 before tagging, determinism verified by tests.
 
+## import/
+
+`import/` holds one folder per source spec, same contract as the evie
+vertical: what the source gives, how it is reached, what it becomes, and
+where the import must refuse. the music-specific twist is the `channel`
+field: every imported row declares whether its evidence is sonic,
+verbal, or both, so the two similarity channels this vertical exists to
+keep separate can never be merged by an import.
+
+first folder: `import/superfan/`, the one source that carries both
+channels (listens plus written album reviews).
+
 ## planned docs
 
 - `schema.md`: the two channel families and their axes
