@@ -51,6 +51,10 @@ building an adapter.
 | storygraph | books read, moods, ratings | **no public api**; roadmap requests open since 2021 with no timeline; CSV import/export of goodreads format | export-only |
 | goodreads | books read, shelves, ratings | public api retired 2020 | dead for programmatic use; CSV export still exists |
 | netflix / prime / disney | viewing history | account page csv (netflix) or nothing | messy, region-dependent |
+| serializd | tv + film logging, diary-style | export or api unverified | letterboxd-shaped; verify route before spec |
+| repov | tv tracking, owner-named | nothing verified | blocked on facts: what it is, how data leaves it |
+| fable | reading, book clubs, progress | export unverified (it imports from goodreads) | social-first: club shelves are not the user's own |
+| pagebound | reading tracking, owner-named | nothing verified | blocked on facts |
 
 ### the pattern worth designing around
 
