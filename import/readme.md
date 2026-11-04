@@ -36,6 +36,18 @@ resolution to an evie work id happens **after** import, against the
 reference catalogues (wikidata, tmdb, open library), and never by
 guessing: unmatched rows stay unmatched and are reported.
 
+## exposure sources and declaration sources
+
+every source here except one records **exposure**: what played, what was
+logged, what was read. `pifyi/` records **declaration**: a person
+publicly saying they love a thing. that is the strongest candidate signal
+any import can carry and still not consent to be profiled, so it enters
+as a claim with the owner gate in front of it, never as a confirmed like.
+
+two sources (`repov/`, `pifyi/`) span verticals. evie imports only the
+rows inside its own vertical and reports the rest, because importing a
+music row into a books/film/tv graph is axis leakage between verticals.
+
 ## the two access families
 
 1. **file export.** the person downloads their own data and uploads it.
@@ -61,9 +73,10 @@ context, and they survive services shutting down, which they keep doing
 | `storygraph/` | books | file export (csv) | designed |
 | `goodreads/` | books | file export (csv; api retired 2020) | designed |
 | `fable/` | books | file export (to verify) | designed |
-| `pagebound/` | books | unknown, verify | blocked on facts |
+| `pagebound/` | books | mobile app, export to verify | designed |
 | `serializd/` | tv + film | verify export or api | designed |
-| `repov/` | tv | unknown, verify | blocked on facts |
+| `repov/` | tv, books + other verticals | mobile app, export to verify | designed |
+| `pifyi/` | shows, books, music, places | mobile app, export to verify | designed |
 
 status means: `designed` (spec written, route plausible, no code),
 `verified` (adapter exists and passes its tests), `blocked on facts` (the
