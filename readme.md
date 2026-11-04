@@ -51,6 +51,16 @@ blend.
 8. cross-vertical bridges are declared, typed and refusable. never an
    implicit average.
 
+## import/, one folder per source
+
+`import/` holds the spec for every route a person's history can come
+through: `letterboxd/`, `trakt/`, `simkl/`, `plex/`, `jellyfin/`,
+`netflix/`, `tvtime/`, `storygraph/`, `goodreads/`. each folder states
+what the source gives, how it is reached, what it becomes after
+normalization, and where the import must refuse. the adapters that
+implement them live on the `evie` branch under `src/ingest/`, one per
+folder, so spec and code always share a name.
+
 ## reading this repository
 
 start with the readme of the branch you care about. each carries its
