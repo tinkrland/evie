@@ -2,6 +2,8 @@
 
 usage (from repo root):
   python3 -m src.cli build [--works dir] [--vocab dir] [--db path]
+  python3 -m src.cli import --source letterboxd --path export/ [--out path]
+  python3 -m src.cli import --source trakt [--out path]
   python3 -m src.cli affinity [--works dir] [--config path] [--out path]
   python3 -m src.cli affinity-check [--table path]
   python3 -m src.cli check [--works dir] [--vocab dir]
@@ -26,6 +28,8 @@ from .build.affinity import (
     with_hashes,
 )
 from .build.compiler import compile_db, load_works, read_work
+from .ingest import letterboxd, trakt
+from .ingest.rows import dump_candidates
 from .build.vocab import catalog_error, load_vocab
 from .build.works import dump
 from .query.context import load_context, validate_context
@@ -67,6 +71,27 @@ def cmd_check_context(args):
     if errors:
         _fail(errors)
     print(f"ok: valid taste context ({len(doc.get('liked') or [])} liked works)")
+
+
+def cmd_import(args):
+    """turn one source's data into a candidate file. never a taste context."""
+    if args.source == "letterboxd":
+        doc = letterboxd.collect(args.path)
+    elif args.source == "trakt":
+        doc, message = trakt.collect()
+        if doc is None:
+            print(f"error: {message}", file=sys.stderr)
+            sys.exit(1)
+    else:
+        print(f"error: no adapter for source {args.source!r}", file=sys.stderr)
+        sys.exit(1)
+    out = Path(args.out) if args.out else Path(f"build/candidates-{args.source}.yaml")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(dump_candidates(doc))
+    print(
+        f"import: {doc['summary']['rows']} candidates from {args.source} -> {out}"
+    )
+    print("candidates are not taste: confirm likes in a taste context before any scoring.")
 
 
 def cmd_affinity(args):
@@ -144,6 +169,12 @@ def main(argv=None):
     add_source(p)
     p.add_argument("context")
     p.set_defaults(fn=cmd_check_context)
+
+    p = sub.add_parser("import", help="turn one source's export into candidates (never taste)")
+    p.add_argument("--source", required=True, help="letterboxd | trakt")
+    p.add_argument("--path", default="", help="export directory, for file-export sources")
+    p.add_argument("--out", default="")
+    p.set_defaults(fn=cmd_import)
 
     p = sub.add_parser("affinity", help="build the structural affinity table (cold-start prior)")
     add_source(p)

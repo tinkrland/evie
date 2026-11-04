@@ -14,7 +14,7 @@ inference at query time. every result can be explained by pointing at
 the shared nodes.
 
 status: pre-alpha. the core engine loop is built and tested (build,
-tags, recommend, affinity; 92 tests). the cold-start structural prior
+tags, recommend, affinity, imports; 102 tests). the cold-start structural prior
 (`src/build/affinity.py`) computes which axis values travel together,
 blending authored tags with harvested keyword co-occurrence in two
 provenanced layers, with recomputable explanations and recorded hashes.
@@ -136,6 +136,8 @@ read in this order:
    not be used for
 7. `docs/affinity.md` - the cold-start structural prior: which axis
    values travel together, computed from the catalogue alone
+7b. `docs/imports.md` - the import adapters: how a source becomes
+   candidates (never taste), and what each adapter must refuse
 8. `docs/prior-art/` - reviewed prior art from sibling projects
    (jewelfinity's affinity-map: structural affinity tables, union
    scoring, recomputable explanations)
