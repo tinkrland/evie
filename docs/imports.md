@@ -49,6 +49,24 @@ adapter is tested without a token and without the network.
 both write `build/candidates-<source>.yaml`, sorted, deterministic, and
 both print the same reminder: candidates are not taste.
 
+## goodreads: the shelf rules are the adapter
+
+the export's `exclusive shelf` column decides everything, and only
+`read` becomes a candidate:
+
+- `to-read` is a shelf of intentions, not interest. excluded.
+- `currently-reading` is unfinished, so it is not a judgement yet.
+  excluded.
+- `read` is a candidate, and `read count` becomes views.
+
+isbn13 then isbn10 is the only hard identity in the file, so it becomes
+`source_id`, and dedupe keys on a hard id before falling back to title:
+two shelf rows carrying one isbn are one book however many editions
+they were logged as, and their read counts add up. excel wraps isbns in
+armour quotes, which the adapter unwraps first, and a row with no isbn
+keeps `source_id` null rather than inventing one. title resolution stays
+in the catalogue step, as ever.
+
 ## what an adapter must refuse
 
 - rows it cannot read, rather than best-guessing fields
@@ -62,11 +80,12 @@ both print the same reminder: candidates are not taste.
 |---|---|---|
 | letterboxd | file export (csv) | implemented, tested offline |
 | trakt | api (oauth) | implemented, tested with an injected payload; live call untested until a token is present |
+| goodreads | file export (csv) | implemented, tested offline; shelf rules pinned by test |
 
 ## next
 
-the remaining file-export adapters in the `import/` tree (goodreads,
-storygraph, netflix, tvtime, fable, serializd, pagebound, repov, pifyi)
+the remaining file-export adapters in the `import/` tree (storygraph,
+netflix, tvtime, fable, serializd, pagebound, repov, pifyi)
 follow the letterboxd pattern: read the export, normalize, dedupe,
 report. the remaining api adapters (simkl, plex, jellyfin) follow the
 trakt pattern: pure shaping plus an injectable fetch.

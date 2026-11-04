@@ -28,7 +28,7 @@ def row(title, year=None, medium=None, source=None, source_id=None, watched_at=N
 
 
 def dedupe(rows):
-    """one candidate per (title, year, medium), deterministically.
+    """one candidate per hard id, else per (title, year, medium).
 
     merges duplicates from sources that log per-viewing (letterboxd diary,
     trakt scrobbles): views count up, the earliest and latest watched dates
@@ -36,7 +36,8 @@ def dedupe(rows):
     """
     merged = {}
     for entry in rows:
-        key = (
+        hard = entry.get("source_id") if str(entry.get("source_id") or "")[:3] in {"978", "979"} else None
+        key = hard or (
             str(entry["title"]).strip().lower(),
             entry["year"],
             entry["medium"],
