@@ -68,8 +68,8 @@ context, and they survive services shutting down, which they keep doing
 | `simkl/` | tv + film | api | designed |
 | `plex/` | tv + film | api (server) | designed |
 | `jellyfin/` | tv + film | api (open source) | designed |
-| `netflix/` | tv + film | file export (viewing activity) | designed |
-| `tvtime/` | tv | file export (community extractors; service shutting down) | designed |
+| `netflix/` | tv + film | file export (viewing activity csv) | verified (parser); download is manual |
+| `tvtime/` | tv | click path, unparsed | clickpath written, unexecuted |
 | `storygraph/` | books | file export (csv or folder) | verified |
 | `goodreads/` | books | file export (csv; api retired 2020) | verified |
 | `fable/` | books | click path (manual export) | clickpath written, unexecuted |
@@ -83,6 +83,8 @@ data and the landing-zone parse exists, but no step has been performed on
 a device yet.
 
 status means: `designed` (spec written, route plausible, no code),
+`clickpath written` (a route exists as data; it has not been run on a
+device, so nothing about it is proven),
 `verified` (adapter exists and passes its tests), `blocked on facts` (the
 source was named by the owner but its route is unverified, so the folder
 records the questions rather than assuming answers).
