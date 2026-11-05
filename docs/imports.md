@@ -74,6 +74,29 @@ in the catalogue step, as ever.
 - writing a taste context
 - inventing a work id from a title match
 
+## storygraph: the status rules, and one negative signal
+
+same shelf logic as goodreads, with one addition worth naming:
+
+- `read` is a candidate.
+- `currently-reading` and `to-read` are excluded for the same reasons.
+- `did-not-finish` is excluded from candidates but **counted and
+  reported** as `excluded_by_status`. it is the only source that tells
+  us a book was rejected, and a rejection is real evidence. it is not a
+  candidate, and it is not dropped either.
+
+identity: storygraph exports `isbn` or a `uid` for books without one. an
+isbn becomes `source_id`; a uid is not an identity, so it goes to detail
+and `source_id` stays null.
+
+the export is sometimes a folder: the library csv plus a tags csv. the
+adapter finds the library by its columns (`title`, `read status`), not
+by filename, because the filename changes across export revisions.
+
+the user's own tags go to detail untouched. they are shelf words, the
+raw material of a future wrangling pass, and importing them as axis
+values would let a foreign taxonomy in through the side door.
+
 ## status
 
 | adapter | route | status |
@@ -81,11 +104,12 @@ in the catalogue step, as ever.
 | letterboxd | file export (csv) | implemented, tested offline |
 | trakt | api (oauth) | implemented, tested with an injected payload; live call untested until a token is present |
 | goodreads | file export (csv) | implemented, tested offline; shelf rules pinned by test |
+| storygraph | file export (csv, file or folder) | implemented, tested offline; did-not-finish counted, not promoted |
 
 ## next
 
-the remaining file-export adapters in the `import/` tree (storygraph,
-netflix, tvtime, fable, serializd, pagebound, repov, pifyi)
+the remaining file-export adapters in the `import/` tree (netflix,
+tvtime, fable, serializd, pagebound, repov, pifyi)
 follow the letterboxd pattern: read the export, normalize, dedupe,
 report. the remaining api adapters (simkl, plex, jellyfin) follow the
 trakt pattern: pure shaping plus an injectable fetch.

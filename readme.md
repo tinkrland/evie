@@ -14,7 +14,7 @@ inference at query time. every result can be explained by pointing at
 the shared nodes.
 
 status: pre-alpha. the core engine loop is built and tested (build,
-tags, recommend, affinity, imports; 110 tests). the cold-start structural prior
+tags, recommend, affinity, imports; 117 tests). the cold-start structural prior
 (`src/build/affinity.py`) computes which axis values travel together,
 blending authored tags with harvested keyword co-occurrence in two
 provenanced layers, with recomputable explanations and recorded hashes.

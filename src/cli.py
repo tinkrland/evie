@@ -28,7 +28,7 @@ from .build.affinity import (
     with_hashes,
 )
 from .build.compiler import compile_db, load_works, read_work
-from .ingest import goodreads, letterboxd, trakt
+from .ingest import goodreads, letterboxd, storygraph, trakt
 from .ingest.rows import dump_candidates
 from .build.vocab import catalog_error, load_vocab
 from .build.works import dump
@@ -77,6 +77,11 @@ def cmd_import(args):
     """turn one source's data into a candidate file. never a taste context."""
     if args.source == "letterboxd":
         doc = letterboxd.collect(args.path)
+    elif args.source == "storygraph":
+        if not args.path:
+            print("error: storygraph import needs --path to the export file or folder", file=sys.stderr)
+            sys.exit(1)
+        doc = storygraph.collect(args.path)
     elif args.source == "goodreads":
         if not args.path:
             print("error: goodreads import needs --path to the export csv", file=sys.stderr)
