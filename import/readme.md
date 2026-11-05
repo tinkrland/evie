@@ -70,7 +70,7 @@ context, and they survive services shutting down, which they keep doing
 | `jellyfin/` | tv + film | api (open source) | designed |
 | `netflix/` | tv + film | file export (viewing activity) | designed |
 | `tvtime/` | tv | file export (community extractors; service shutting down) | designed |
-| `storygraph/` | books | file export (csv) | designed |
+| `storygraph/` | books | file export (csv or folder) | verified |
 | `goodreads/` | books | file export (csv; api retired 2020) | verified |
 | `fable/` | books | file export (to verify) | designed |
 | `pagebound/` | books | mobile app, export to verify | designed |
