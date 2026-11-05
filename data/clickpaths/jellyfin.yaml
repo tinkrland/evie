@@ -1,0 +1,28 @@
+source: jellyfin
+app: jellyfin (self-hosted web dashboard)
+purpose: credential
+verified: false
+notes: >
+  jellyfin is open source and self-hosted, so the api is the owner's own
+  server. an api key is created in the dashboard and scoped to a user;
+  playback history per user is what the import reads, never the household
+  aggregate.
+steps:
+- do: click
+  target: Dashboard
+  expect: the admin dashboard
+- do: click
+  target: API Keys
+  expect: the key list with a create option
+- do: choose
+  target: New API Key
+  expect: a name prompt, then a key appears once
+- do: copy
+  target: API Key
+  expect: a value for JELLYFIN_API_KEY, shown only at creation
+- do: copy
+  target: Server URL
+  expect: a value for JELLYFIN_URL
+artifact:
+  kind: secret
+  pattern: env

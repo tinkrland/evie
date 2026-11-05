@@ -105,6 +105,27 @@ values would let a foreign taxonomy in through the side door.
 | trakt | api (oauth) | implemented, tested with an injected payload; live call untested until a token is present |
 | goodreads | file export (csv) | implemented, tested offline; shelf rules pinned by test |
 | storygraph | file export (csv, file or folder) | implemented, tested offline; did-not-finish counted, not promoted |
+| netflix | file export (viewing activity csv) | implemented, tested offline; found by columns, not filename |
+
+## click paths have a purpose
+
+a path is either an `export` (fetch the data file) or a `credential` (the
+clicks that mint an api key or copy a token). the distinction is enforced,
+not decorative:
+
+- an `export` path must name the parser its artifact feeds (`parse:`), or
+  carry `why_unparsed:` explaining why none exists. a path that ends in a
+  file nobody can read is a dead end, and the check refuses the silence.
+- a `credential` path must name a `secret` artifact, never a file, because
+  what it produces goes into the environment and never onto disk.
+- `parse:` is checked for real: the loader imports that module and the
+  suite refuses a name that exposes no `collect()`.
+
+current tree: exports are letterboxd, goodreads, storygraph, netflix
+(parsed) plus repov, pagebound, pifyi, serializd, fable, tvtime
+(unparsed, each carrying its reason). credentials are trakt, simkl, plex,
+jellyfin. every path stays `verified: false` until a real run flips it,
+and a test asserts exactly that rather than trusting good intentions.
 
 ## next
 

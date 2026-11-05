@@ -11,7 +11,9 @@ the steps only ever drive an *export flow*, and the driver is handed an
 allowlist of labels from the file. a step that is not in the file cannot
 be performed.
 
-two ways to use it:
+a path has a purpose: `export` fetches the data file, `credential`
+fetches the token an api adapter needs (the clicks to make an app, mint
+a key, copy a plex token). two ways to use it:
 
 - `plan(source)` prints the click path for a human. this is the whole
   feature for sources where the click needs a logged-in browser the owner
@@ -61,6 +63,18 @@ def check(doc, source=None):
     artifact = doc.get("artifact") or {}
     if not artifact.get("pattern"):
         errors.append("a click path must name the artifact pattern it produces")
+    purpose = doc.get("purpose", "export")
+    if purpose not in ("export", "credential"):
+        errors.append(f"purpose must be export or credential, not {purpose!r}")
+    if purpose == "export":
+        # an export path is only worth writing if something can read the
+        # artifact. refuse silence: name a parser, or say why there is none.
+        parse = doc.get("parse")
+        if not parse and not str(doc.get("why_unparsed") or "").strip():
+            errors.append(
+                "an export path needs `parse:` naming its adapter, or "
+                "`why_unparsed:` saying why none exists"
+            )
     if not doc.get("verified"):
         # not an error: an unverified path is honest, it just has to say so
         pass
@@ -70,7 +84,8 @@ def check(doc, source=None):
 def plan(source, paths_dir=None):
     """human-readable click path. the text a person can follow."""
     doc = load(source, paths_dir)
-    lines = [f"click path: {doc['source']} ({doc.get('app', 'unknown app')})", ""]
+    header = doc.get("purpose", "export")
+    lines = [f"click path: {doc['source']} ({doc.get('app', 'unknown app')}) [{header}]", ""]
     if doc.get("notes"):
         lines += [f"note: {doc['notes']}", ""]
     for index, step in enumerate(doc.get("steps") or [], start=1):

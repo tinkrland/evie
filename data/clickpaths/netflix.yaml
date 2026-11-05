@@ -1,0 +1,26 @@
+source: netflix
+app: netflix (web account page)
+purpose: export
+verified: false
+parse: netflix
+notes: >
+  the viewing activity download is a real csv and the only honest route:
+  netflix has no public api for your own history. the file has two columns,
+  so everything a catalogue needs (year, medium, episode identity) is
+  missing by construction and stays missing after import.
+steps:
+- do: click
+  target: Account
+  expect: the account page with profile and membership controls
+- do: click
+  target: Viewing activity
+  expect: a paginated list of everything watched
+- do: click
+  target: Download all
+  expect: a csv download starting
+- do: wait
+  target: "*ViewingActivity*.csv"
+  expect: the csv lands in downloads
+artifact:
+  kind: file
+  pattern: "*ViewingActivity*.csv"

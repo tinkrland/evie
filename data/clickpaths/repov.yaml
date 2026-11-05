@@ -1,11 +1,11 @@
 source: repov
 app: repov (ios, android)
+purpose: export
 verified: false
-notes: >
-  repov is a mobile app, so the export (if it exists) sits behind the app's
-  own settings. this path is written from the app's screens (records, taste
-  room, archive, my space) and has NOT been executed: every step needs
-  confirming on a device before the file can say verified true.
+why_unparsed: 'no adapter yet: the export format is unverified, so a parser written today would be a guess about a file nobody has seen.'
+notes: 'repov is a mobile app, so the export (if it exists) sits behind the app''s own settings. this path is written from the app''s screens (records, taste room, archive, my space) and has NOT been executed: every step needs confirming on a device before the file can say verified true.
+
+  '
 steps:
 - do: click
   target: My Space
@@ -17,9 +17,9 @@ steps:
   target: Export
   expect: a download starting, or a request-my-data confirmation
 - do: wait
-  target: "*.zip"
+  target: '*.zip'
   expect: the archive lands in downloads
 artifact:
   kind: file
-  pattern: "*repov*"
+  pattern: '*repov*'
   unpack: true

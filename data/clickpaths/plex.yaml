@@ -1,0 +1,25 @@
+source: plex
+app: plex (web, self-hosted)
+purpose: credential
+verified: false
+notes: >
+  plex is a household server, not one person. the token gives an api that
+  sees every profile on the server, so the import must name whose history
+  it is reading before any row is trusted, and two people on one server
+  never merge.
+steps:
+- do: click
+  target: Account
+  expect: the plex account page
+- do: click
+  target: Authorized Devices
+  expect: a list of tokens and sessions
+- do: copy
+  target: X-Plex-Token
+  expect: a value for PLEX_TOKEN, visible in any item url while signed in
+- do: choose
+  target: Users
+  expect: the household profile list, so the import can name whose history it reads
+artifact:
+  kind: secret
+  pattern: env

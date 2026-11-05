@@ -1,0 +1,31 @@
+source: tvtime
+app: tv time (ios, android) + support portal
+purpose: export
+verified: false
+why_unparsed: >
+  no canonical export exists. tv time was a community extractor ecosystem
+  (third-party tools that parsed the app's local database), and the service
+  is shutting down, so every extractor emits a different shape. a parser
+  written today would encode one stranger's tool, not the source.
+notes: >
+  this is a migration route, not a reading route. the clicks below request
+  whatever the service will still hand over before it closes; whatever
+  arrives goes through the landing zone and is reported as unknown until
+  somebody reads a real file and writes a signature from it.
+steps:
+- do: click
+  target: Support
+  expect: the help centre, where gdpr requests are handled for this service
+- do: click
+  target: Contact
+  expect: a message form or an email address
+- do: choose
+  target: Data request
+  expect: an acknowledgement with a reference, since exports here are human-processed
+- do: wait
+  target: "*.zip"
+  expect: an archive arrives by email or download link
+artifact:
+  kind: file
+  pattern: "*tvtime*"
+  unpack: true

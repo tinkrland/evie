@@ -28,7 +28,7 @@ from .build.affinity import (
     with_hashes,
 )
 from .build.compiler import compile_db, load_works, read_work
-from .ingest import clickpath, goodreads, letterboxd, manual, resolve, storygraph, trakt
+from .ingest import clickpath, goodreads, letterboxd, manual, netflix, resolve, storygraph, trakt
 from .ingest.rows import dump_candidates
 from .build.vocab import catalog_error, load_vocab
 from .build.works import dump
@@ -87,6 +87,11 @@ def cmd_import(args):
             print("error: goodreads import needs --path to the export csv", file=sys.stderr)
             sys.exit(1)
         doc = goodreads.collect(args.path)
+    elif args.source == "netflix":
+        if not args.path:
+            print("error: netflix import needs --path to the download or its folder", file=sys.stderr)
+            sys.exit(1)
+        doc = netflix.collect(args.path)
     elif args.source == "trakt":
         doc, message = trakt.collect()
         if doc is None:

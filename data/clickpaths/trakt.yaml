@@ -1,0 +1,31 @@
+source: trakt
+app: trakt (web)
+purpose: credential
+verified: false
+notes: >
+  trakt is an api source, so the manual part is not an export: it is making
+  an application and copying two values into the environment. the client id
+  is public-ish and the access token is the owner's; both live in secrets,
+  never in the repo and never in a taste context.
+steps:
+- do: click
+  target: Settings
+  expect: account settings
+- do: click
+  target: Your API Applications
+  expect: the app list with a create option
+- do: choose
+  target: New Application
+  expect: a form asking for a name and a redirect uri
+- do: copy
+  target: Client ID
+  expect: a value for TRAKT_CLIENT_ID
+- do: choose
+  target: Authorize
+  expect: an oauth consent screen for the owner's own account
+- do: copy
+  target: Access Token
+  expect: a value for TRAKT_ACCESS_TOKEN
+artifact:
+  kind: secret
+  pattern: env

@@ -1,11 +1,11 @@
 source: pagebound
 app: pagebound (ios, android)
+purpose: export
 verified: false
-notes: >
-  pagebound advertises monthly wrap-ups, which are a display and not an
-  export. this path assumes settings offer a real data export; a recap
-  screen is not a route, and if that is all there is the source stays
-  blocked rather than being scraped.
+why_unparsed: 'no adapter yet: the export format is unverified, so a parser written today would be a guess about a file nobody has seen.'
+notes: 'pagebound advertises monthly wrap-ups, which are a display and not an export. this path assumes settings offer a real data export; a recap screen is not a route, and if that is all there is the source stays blocked rather than being scraped.
+
+  '
 steps:
 - do: click
   target: Profile
@@ -17,8 +17,8 @@ steps:
   target: Export Data
   expect: either a download or an email confirmation
 - do: wait
-  target: "*.csv"
+  target: '*.csv'
   expect: the csv lands in downloads
 artifact:
   kind: file
-  pattern: "*pagebound*"
+  pattern: '*pagebound*'

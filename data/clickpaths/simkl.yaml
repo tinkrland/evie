@@ -1,0 +1,27 @@
+source: simkl
+app: simkl (web)
+purpose: credential
+verified: false
+notes: >
+  simkl is an api source. the clicks below mint an app whose client id and
+  secret the adapter uses; the pin code flow needs a human to type a short
+  code into simkl's own page, which is why this cannot be fully automatic.
+steps:
+- do: click
+  target: Settings
+  expect: account settings
+- do: click
+  target: API
+  expect: the developer section with app creation
+- do: choose
+  target: Create App
+  expect: a form asking for a name and a redirect uri
+- do: copy
+  target: Client ID
+  expect: a value for SIMKL_CLIENT_ID
+- do: copy
+  target: Client Secret
+  expect: a value for SIMKL_CLIENT_SECRET
+artifact:
+  kind: secret
+  pattern: env
