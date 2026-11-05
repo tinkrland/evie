@@ -72,11 +72,15 @@ context, and they survive services shutting down, which they keep doing
 | `tvtime/` | tv | file export (community extractors; service shutting down) | designed |
 | `storygraph/` | books | file export (csv or folder) | verified |
 | `goodreads/` | books | file export (csv; api retired 2020) | verified |
-| `fable/` | books | file export (to verify) | designed |
-| `pagebound/` | books | mobile app, export to verify | designed |
-| `serializd/` | tv + film | verify export or api | designed |
-| `repov/` | tv, books + other verticals | mobile app, export to verify | designed |
-| `pifyi/` | shows, books, music, places | mobile app, export to verify | designed |
+| `fable/` | books | click path (manual export) | clickpath written, unexecuted |
+| `pagebound/` | books | click path (manual export) | clickpath written, unexecuted |
+| `serializd/` | tv + film | click path (manual export) | clickpath written, unexecuted |
+| `repov/` | tv, books + other verticals | click path (manual export) | clickpath written, unexecuted |
+| `pifyi/` | shows, books, music, places | click path (manual export) | clickpath written, unexecuted |
+
+`clickpath written, unexecuted` means the export route is spelled out as
+data and the landing-zone parse exists, but no step has been performed on
+a device yet.
 
 status means: `designed` (spec written, route plausible, no code),
 `verified` (adapter exists and passes its tests), `blocked on facts` (the
