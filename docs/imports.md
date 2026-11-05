@@ -109,7 +109,8 @@ values would let a foreign taxonomy in through the side door.
 ## next
 
 the remaining file-export adapters in the `import/` tree (netflix,
-tvtime, fable, serializd, pagebound, repov, pifyi)
-follow the letterboxd pattern: read the export, normalize, dedupe,
-report. the remaining api adapters (simkl, plex, jellyfin) follow the
+tvtime) follow the letterboxd pattern: read the export, normalize,
+dedupe, report. the mobile-app sources (fable, serializd, pagebound,
+repov, pifyi) take the click-path route instead: a written route plus a
+landing-zone parse, because none of them offers a file we can fetch. the remaining api adapters (simkl, plex, jellyfin) follow the
 trakt pattern: pure shaping plus an injectable fetch.

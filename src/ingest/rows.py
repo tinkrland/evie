@@ -27,6 +27,12 @@ def row(title, year=None, medium=None, source=None, source_id=None, watched_at=N
     }
 
 
+def normalize_title(text):
+    """lowercase, punctuation-folded, whitespace-collapsed. no fuzzy rules."""
+    keep = [ch for ch in str(text or "").lower() if ch.isalnum() or ch == " "]
+    return " ".join("".join(keep).split())
+
+
 def dedupe(rows):
     """one candidate per hard id, else per (title, year, medium).
 

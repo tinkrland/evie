@@ -1,0 +1,24 @@
+source: pifyi
+app: pi.fyi (ios, android, web)
+verified: false
+notes: >
+  pi.fyi is a taste-sharing app, not a tracker, so what a click path can
+  recover is the owner's own posts, not a watch history. the profile is the
+  exportable object. scenes and tags stay free text either way.
+steps:
+- do: click
+  target: Profile
+  expect: the owner's own posts, not the feed
+- do: click
+  target: Settings
+  expect: account settings
+- do: click
+  target: Export
+  expect: a download or a request-my-data confirmation
+- do: wait
+  target: "*.zip"
+  expect: the archive lands in downloads
+artifact:
+  kind: file
+  pattern: "*pi*"
+  unpack: true

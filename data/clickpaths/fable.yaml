@@ -1,0 +1,23 @@
+source: fable
+app: fable (ios, android, web)
+verified: false
+notes: >
+  fable imports from goodreads, so it probably exports something close to
+  that shape. social-first means club and buddy-read activity is mixed into
+  the account: only rows the person marked read count.
+steps:
+- do: click
+  target: Profile
+  expect: the owner's own profile
+- do: click
+  target: Settings
+  expect: account settings
+- do: click
+  target: Export
+  expect: a download or an email confirmation
+- do: wait
+  target: "*.csv"
+  expect: the file lands in downloads
+artifact:
+  kind: file
+  pattern: "*fable*"

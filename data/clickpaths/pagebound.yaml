@@ -1,0 +1,24 @@
+source: pagebound
+app: pagebound (ios, android)
+verified: false
+notes: >
+  pagebound advertises monthly wrap-ups, which are a display and not an
+  export. this path assumes settings offer a real data export; a recap
+  screen is not a route, and if that is all there is the source stays
+  blocked rather than being scraped.
+steps:
+- do: click
+  target: Profile
+  expect: the profile screen
+- do: click
+  target: Settings
+  expect: account settings
+- do: click
+  target: Export Data
+  expect: either a download or an email confirmation
+- do: wait
+  target: "*.csv"
+  expect: the csv lands in downloads
+artifact:
+  kind: file
+  pattern: "*pagebound*"

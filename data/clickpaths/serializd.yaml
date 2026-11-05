@@ -1,0 +1,23 @@
+source: serializd
+app: serializd (ios, android, web)
+verified: false
+notes: >
+  diary-shaped, so the recovered data is per-viewing and must be deduped to
+  one row per show. if the account offers no export at all, the source
+  stays blocked: no scraping the public profile.
+steps:
+- do: click
+  target: Profile
+  expect: the owner's own profile page
+- do: click
+  target: Settings
+  expect: account settings
+- do: click
+  target: Data Export
+  expect: a download or an email confirmation
+- do: wait
+  target: "*.csv"
+  expect: the file lands in downloads
+artifact:
+  kind: file
+  pattern: "*serializd*"

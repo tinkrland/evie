@@ -28,7 +28,7 @@ from .build.affinity import (
     with_hashes,
 )
 from .build.compiler import compile_db, load_works, read_work
-from .ingest import goodreads, letterboxd, storygraph, trakt
+from .ingest import clickpath, goodreads, letterboxd, manual, resolve, storygraph, trakt
 from .ingest.rows import dump_candidates
 from .build.vocab import catalog_error, load_vocab
 from .build.works import dump
@@ -158,6 +158,42 @@ def cmd_recommend(args):
     sys.stdout.write(yaml.safe_dump(result, sort_keys=False, default_flow_style=False, width=1000))
 
 
+def cmd_clickpath(args):
+    """print the export route for a manual-export source."""
+    print(clickpath.plan(args.source))
+
+
+def cmd_capture(args):
+    """parse a landing zone of manually exported files into candidates."""
+    doc = manual.collect(args.path)
+    out = Path(args.out) if args.out else Path("build/candidates-manual.yaml")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(dump_candidates(doc))
+    summary = doc["summary"]
+    print(f"capture: {summary['rows']} candidates from {len(summary['files_used'])} file(s) -> {out}")
+    if summary["unknown"]:
+        print(f"unknown files left alone: {', '.join(summary['unknown'])}")
+    if summary["archives"]:
+        print(f"archives need unpacking first: {', '.join(summary['archives'])}")
+    print("candidates are not taste: confirm likes in a taste context before any scoring.")
+
+
+def cmd_resolve(args):
+    """attach an evie work id, or an honest non-match, to every candidate."""
+    doc = yaml.safe_load(Path(args.path).read_text())
+    vocab = load_vocab(args.vocab)
+    works = load_works(args.works, vocab)
+    out_doc = resolve.resolve_doc(doc, works)
+    out = Path(args.out) if args.out else Path(args.path).with_name(Path(args.path).stem + "-resolved.yaml")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(resolve.dump(out_doc))
+    summary = out_doc["summary"]
+    print(
+        f"resolve: {summary['resolved']} resolved, {summary['unmatched']} unmatched, "
+        f"{summary['ambiguous']} ambiguous of {summary['rows']} -> {out}"
+    )
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="latent", description="deterministic taste decomposition engine (phase 0)")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -185,6 +221,21 @@ def main(argv=None):
     p.add_argument("--path", default="", help="export directory, for file-export sources")
     p.add_argument("--out", default="")
     p.set_defaults(fn=cmd_import)
+
+    p = sub.add_parser("clickpath", help="print the export route for a source with no api")
+    p.add_argument("--source", required=True)
+    p.set_defaults(fn=cmd_clickpath)
+
+    p = sub.add_parser("capture", help="parse a folder of manually exported files")
+    p.add_argument("--path", required=True)
+    p.add_argument("--out", default="")
+    p.set_defaults(fn=cmd_capture)
+
+    p = sub.add_parser("resolve", help="match candidates to evie work ids, or say why not")
+    add_source(p)
+    p.add_argument("--path", required=True)
+    p.add_argument("--out", default="")
+    p.set_defaults(fn=cmd_resolve)
 
     p = sub.add_parser("affinity", help="build the structural affinity table (cold-start prior)")
     add_source(p)

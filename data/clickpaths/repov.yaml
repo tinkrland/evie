@@ -1,0 +1,25 @@
+source: repov
+app: repov (ios, android)
+verified: false
+notes: >
+  repov is a mobile app, so the export (if it exists) sits behind the app's
+  own settings. this path is written from the app's screens (records, taste
+  room, archive, my space) and has NOT been executed: every step needs
+  confirming on a device before the file can say verified true.
+steps:
+- do: click
+  target: My Space
+  expect: the profile screen with share and edit controls
+- do: click
+  target: Settings
+  expect: account settings, where trackers usually keep their data controls
+- do: click
+  target: Export
+  expect: a download starting, or a request-my-data confirmation
+- do: wait
+  target: "*.zip"
+  expect: the archive lands in downloads
+artifact:
+  kind: file
+  pattern: "*repov*"
+  unpack: true
